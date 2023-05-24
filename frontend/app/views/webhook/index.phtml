@@ -1,0 +1,29 @@
+<header>
+    <div class="row my-3">
+        <h2 class="col-9">Webhook Form</h2>
+        <a class="btn btn-primary col-3" href="/webhook/display">Webhooks</a>
+    </div>
+    <form class="row form my-4" action="/webhook/add" method="post">
+        <div class="col-6">
+            <label for="name">Name</label>
+            <input class="form-control" type="text" name="name" id="name">
+        </div>
+
+        <div class="col-6">
+            <label for="event">Events</label>
+            <select class="form-control" name="event" id="event">
+                <option selected disabled>-Select-</option>
+                <option value="create">Product Create</option>
+                <option value="update">Product Update</option>
+            </select>
+        </div>
+        <div class="col-6">
+            <label for="qunatity">Validation Key</label>
+            <input class="form-control" type="text" name="key" id="key">
+        </div>
+        <div class="col-6">
+            <button type="submit" class="btn btn-primary m-4 py-2 px-4 ">Add</button>
+        </div>
+    </form>
+
+</header>

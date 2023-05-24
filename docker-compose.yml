@@ -1,0 +1,65 @@
+version: "3.3"
+services:
+  frontend:
+    build:
+      dockerfile: php.Dockerfile
+      context: .
+    restart: always
+    volumes:
+      - "./frontend/:/var/www/html/"
+    ports:
+      - "8080:80"
+  api:
+    build:
+      dockerfile: php.Dockerfile
+      context: .
+    restart: always
+    volumes:
+      - "./src/api/:/var/www/html/"
+    ports:
+      - "8000:80"
+  api2:
+    build:
+      dockerfile: php.Dockerfile
+      context: .
+    restart: always
+    volumes:
+      - "./src/api2/:/var/www/html/"
+    ports:
+      - "8001:80"
+  front:
+    build:
+      dockerfile: php.Dockerfile
+      context: .
+    restart: always
+    volumes:
+      - "./src/front/:/var/www/html/"
+    ports:
+      - "9080:80"
+  # mysql-server:
+  #   image: mysql:8.0.19
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: secret
+  #   volumes:
+  #     - mysql-data:/var/lib/mysql
+  mongo:
+    container_name: mongo
+    image: mongo:4.4
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password123
+    ports:
+      - "27017:27017"
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin:5.0.1
+  #   restart: always
+  #   environment:
+  #     PMA_HOST: mysql-server
+  #     PMA_USER: root
+  #     PMA_PASSWORD: secret
+  #   ports:
+  #     - "5001:80"
+volumes:
+  mysql-data:
